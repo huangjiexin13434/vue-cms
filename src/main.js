@@ -2,15 +2,24 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
 
-import 'mint-ui/lib/style.css'
+import VueRouter from 'vue-router'
+// 1.2 安装路由
+Vue.use(VueRouter);
+
+import 'mint-ui/lib/style.css';
 import { Header } from 'mint-ui';
+import { link } from 'fs';
+
 Vue.component(Header.name, Header);
 
 
 Vue.config.productionTip = false
 
+import './lib/mui/css/mui.min.css'
+import './lib/mui/css/icons-extra.css'
+import router from './router/router.js'
+Vue.use(router);
 console.log('dddddddd');
 /* eslint-disable no-new */
 new Vue({
@@ -20,4 +29,6 @@ new Vue({
   render(h) {
      return h(App);
   },
+  router:router
+  
 })
