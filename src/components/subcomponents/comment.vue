@@ -1,15 +1,16 @@
 <template>
     <div class="comment-contain">
         <h1>发表评论</h1>
-        <textarea  placeholder="请输入要BB的内容（做多吐槽120字）" ></textarea>
-        <mt-button type="primary" size="large">评论</mt-button>
+        <textarea  placeholder="请输入要BB的内容（做多吐槽120字）" v-model="content" ></textarea>
+        <mt-button type="primary" size="large" @click="postcomment">评论</mt-button>
         <div class="cmt-container" v-for="(comment,index) in comments" :key="comment.id">
             <div class="cmt-title">
                 <h3>第{{index+1}}楼 &nbsp; &nbsp;&nbsp;用户：{{comment.user_name}}
                 &nbsp;&nbsp; 发表时间&nbsp;{{comment.add_time}}</h3>
             </div>
             <div class="cmt-content"> 
-                  <h3>{{comment.content=='undefined'||comment.content==''?'该用户很懒，没有评论':comment.content}}</h3>
+                  <h3>{{comment.content=='undefined'||comment.content==''?
+                  '该用户很懒，没有评论':comment.content}}</h3>
             </div>
         </div>
         <!-- <div class="cmt-container">
@@ -44,7 +45,8 @@ export default {
         return {
             pageindex:'1',
             comments:[],
-            allcomments:''
+            allcomments:'',
+            content:''
         }
     },
     methods:{
@@ -52,7 +54,7 @@ export default {
             console.log('========'+this.id);
             axios.get("http://www.liulongbin.top:3005/api/getcomments/"+this.id+
                     "?pageindex="+this.pageindex).then(result=>{
-              //  console.log(result.data); 
+                console.log(result.data); 
                 if(result.data.status==0){
                     this.allcomments=result.data.message;
                 
@@ -66,6 +68,27 @@ export default {
         moreData(){
             this.pageindex++;
             this.getComment();
+        },
+        postcomment(){
+             axios.post("http://www.liulongbin.top:3005/api/postcomment/"+this.id,
+                    {
+                       content:this.content     
+                    }).then(result=>{
+                    console.log('this.content.trim().length  '+this.content.trim().length);    
+                    if(this.content.trim().length!=0){
+                        var obj={
+                            add_time: new Date(),
+                            content: this.content,
+                            user_name: "匿名用户"
+                        }   
+                        this.comments.unshift(obj);
+                        Toast(result.data.message);
+                        this.content='';
+                        
+                    }else{
+                        Toast("内容不能为空!!!");
+                    }
+            });
         }
     },
     props: ["id"],
@@ -76,8 +99,6 @@ export default {
                       this.id=newVal;
                   }
                   this.getComment();
-                  
-
              },
     }
     
