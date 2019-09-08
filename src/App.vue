@@ -67,8 +67,6 @@ export default {
    }
    .v-leave-active{
         position: absolute;
-      
-       transition: all 0.5s ease; 
-   
+       transition: all 0.5s ease;   
    }
 </style>

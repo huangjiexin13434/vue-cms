@@ -4,6 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>vue-cms</title>
+    <script src="./lib/jquery.min.js"></script>
+    <script>
+      $(function(){
+        $('#btn').on('click',function(){ 
+            $.ajax({
+              url:'./data.json',
+              dataType:'json',
+              type:'get',
+             /*  success:function(data){
+                console.log(data);
+              } */
+            }).then(function(data){
+              console.log(data);
+            })
+        });
+      });
+    </script>
     <style>
         .example{
             color:red;
@@ -33,6 +50,8 @@
       <div id="b">
         ffffffffff
       </div>
+
     </div>
+    <input type="button" id='btn' value="btn"/>
   </body>
 </html>

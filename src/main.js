@@ -21,7 +21,16 @@ import './lib/mui/css/icons-extra.css'
 import router from './router/router.js'
 Vue.use(router);
 console.log('dddddddd');
-/* eslint-disable no-new */
+
+//Vue.config.devtools = true;
+import moment from 'moment';
+Vue.filter("dateForm",function(data){
+  return moment(data).format('YYYY-MM-DD HH:mm:ss');    
+  
+});
+import { Button } from 'mint-ui';
+
+Vue.component(Button.name, Button);
 new Vue({
   el: '#app',
   router,

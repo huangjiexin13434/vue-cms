@@ -12,25 +12,26 @@
     
      <div>
         <ul class="mui-table-view mui-grid-view mui-grid-9">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/newList">
 		                    <img src="../images/menu1.png" />
-		                    <div class="mui-media-body">定位</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <div class="mui-media-body">新闻</div></router-link></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
 		                   <img src="../images/menu2.png" />
                         <span class="mui-badge">5</span>
-		                    <div class="mui-media-body">吃饭</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <div class="mui-media-body">吃饭</div></router-link></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
 		                    <img src="../images/menu3.png" />
-		                    <div class="mui-media-body">聊天</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <div class="mui-media-body">聊天</div></router-link></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
 		                    <img src="../images/menu4.png" />
-		                    <div class="mui-media-body">收款</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <div class="mui-media-body">收款</div></router-link></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
 		                    <img src="../images/menu5.png" />
-		                    <div class="mui-media-body">安全</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <div class="mui-media-body">安全</div></router-link></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
 		                    <img src="../images/menu6.png" />
-		                    <div class="mui-media-body">更多</div></a></li>
+		                    <div class="mui-media-body">更多</div></router-link></li>
 		            
 		        </ul> 
      </div>
@@ -45,6 +46,7 @@ Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
  import axios from 'axios';
  Vue.prototype.$http= axios;
+ 
 export default {
   
   data () {
@@ -55,16 +57,18 @@ export default {
   },
   created(){
     this.lubotu();
+   
   },
   methods:{
     lubotu(){
       this.$http.get("http://www.liulongbin.top:3005/api/getlunbo",{
        
       }).then(result=>{
-           console.log(result.data.message);
+          
            this.lubotuData=result.data.message;
       });
-    }
+    },
+   
   }
 }
 </script>
@@ -90,9 +94,16 @@ export default {
       width: 800px;
       height: 100px;
     }
-    .mui-grid-view.mui-grid-9 .mui-table-view-cell{
+ 
+    
+    .mui-grid-view .mui-grid-9 .mui-table-view-cell{
       background-color: white;
       border: 0px;
+    }
+    //  .mui-table-view-cell .mui-media .mui-col-xs-4  
+    .mui-col-sm-3 {
+     width: 33.3%;
+     background-color: white;
     }
     ul li img{
         width: 63px;
