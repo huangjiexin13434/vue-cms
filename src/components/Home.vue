@@ -16,10 +16,11 @@
                 <router-link to="/home/newList">
 		                    <img src="../images/menu1.png" />
 		                    <div class="mui-media-body">新闻</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/photoList">
 		                   <img src="../images/menu2.png" />
                         <span class="mui-badge">5</span>
-		                    <div class="mui-media-body">吃饭</div></router-link></li>
+		                    <div class="mui-media-body">图片</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
 		                    <img src="../images/menu3.png" />
 		                    <div class="mui-media-body">聊天</div></router-link></li>
@@ -102,8 +103,8 @@ export default {
     }
     //  .mui-table-view-cell .mui-media .mui-col-xs-4  
     .mui-col-sm-3 {
-     width: 33.3%;
-     background-color: white;
+      width: 33.3%;
+      background-color: white;
     }
     ul li img{
         width: 63px;

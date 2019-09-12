@@ -5,7 +5,7 @@
        <p class="subtitle">
             <span>发表时间 {{newInfo.add_time|dateForm}} </span>
             <span>点击 {{newInfo.click}}</span>
-            <span>点击 {{newInfo.id}}</span>
+            
        </p>
       <p v-html="newInfo.content"></p>
      

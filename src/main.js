@@ -7,11 +7,12 @@ import VueRouter from 'vue-router'
 // 1.2 安装路由
 Vue.use(VueRouter);
 
-import 'mint-ui/lib/style.css';
-import { Header } from 'mint-ui';
+import VuePreview from 'vue2-preview'
+Vue.use(VuePreview);
+
 import { link } from 'fs';
 
-Vue.component(Header.name, Header);
+//Vue.component(Header.name, Header);
 
 
 Vue.config.productionTip = false
@@ -20,7 +21,6 @@ import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 import router from './router/router.js'
 Vue.use(router);
-console.log('dddddddd');
 
 //Vue.config.devtools = true;
 import moment from 'moment';
@@ -28,9 +28,13 @@ Vue.filter("dateForm",function(data){
   return moment(data).format('YYYY-MM-DD HH:mm:ss');    
   
 });
-import { Button } from 'mint-ui';
 
-Vue.component(Button.name, Button);
+import MintUI from 'mint-ui'
+Vue.use(MintUI);
+import 'mint-ui/lib/style.css';
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad);
+
 new Vue({
   el: '#app',
   router,

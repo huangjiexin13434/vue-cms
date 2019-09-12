@@ -6,6 +6,8 @@ import search from '../components/Search.vue'
 import shopcar from '../components/Shopcar.vue'
 import newsList from '../components/news/NewsList.vue'
 import newInfo from '../components/news/NewInfo.vue'
+import  photoList from '../components/photo/PhotoList.vue';
+import  photoInfo from '../components/photo/PhotoInfo.vue';
 var router=new VueRouter({
     routes:[
         {path:'/',component:home},
@@ -15,6 +17,10 @@ var router=new VueRouter({
         {path:'/shopcar',component:shopcar},
         {path:'/home/newList',component:newsList},
         {path:'/home/newInfo/:id',component:newInfo},  
+        {path:'/home/photoList',component:photoList},  
+        {path:'/home/photoInfo/:id',component:photoInfo},  
+
+        
     ],
      linkActiveClass:'mui-active'
  });

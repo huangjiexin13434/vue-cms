@@ -36,6 +36,8 @@
 <script>
 import axios from 'axios';
 import { Toast } from "mint-ui";
+import { Header } from 'mint-ui';
+import { Button } from 'mint-ui';
 export default {
     created(){
        
