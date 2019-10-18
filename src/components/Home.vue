@@ -1,14 +1,7 @@
 <template>
   <div >
-      <mt-swipe :auto="4000">
-       <!-- <mt-swipe-item>1</mt-swipe-item>
-        <mt-swipe-item>2</mt-swipe-item>
-        <mt-swipe-item>3</mt-swipe-item>-->
-        <mt-swipe-item v-for="item in lubotuData" :key="item.id">
-           <img :src="item.img"/>
-        </mt-swipe-item>
-      </mt-swipe>
-      
+     
+      <swiper :lubotuData="lubotuData"></swiper>
     
      <div>
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -21,9 +14,10 @@
 		                   <img src="../images/menu2.png" />
                         <span class="mui-badge">5</span>
 		                    <div class="mui-media-body">图片</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/goodsList">
 		                    <img src="../images/menu3.png" />
-		                    <div class="mui-media-body">聊天</div></router-link></li>
+		                    <div class="mui-media-body">商品</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
 		                    <img src="../images/menu4.png" />
 		                    <div class="mui-media-body">收款</div></router-link></li>
@@ -47,7 +41,10 @@ Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
  import axios from 'axios';
  Vue.prototype.$http= axios;
+ import swiper from '../components/subcomponents/Swipe.vue';
  
+
+ import lubotu from '../api/getlunbo.json'
 export default {
   
   data () {
@@ -62,35 +59,25 @@ export default {
   },
   methods:{
     lubotu(){
-      this.$http.get("http://www.liulongbin.top:3005/api/getlunbo",{
+    //   this.axios.get("/src/api/getlunbo.json",{
        
-      }).then(result=>{
+    //   }).then(result=>{ 
           
-           this.lubotuData=result.data.message;
-      });
-    },
+            this.lubotuData=lubotu.message;
+          
+    //   });
+     },
    
+  },
+   components: {
+    swiper
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    .mint-swipe{
-        height:100px;
-        width: 100%;
-          .mint-swipe-item{    
-           &:nth-child(1){
-             background-color: red;
-           }
-             &:nth-child(2){
-             background-color: green;
-           }
-             &:nth-child(3){
-             background-color: pink;
-           }
-         } 
-    }
+    
     img{
       width: 800px;
       height: 100px;

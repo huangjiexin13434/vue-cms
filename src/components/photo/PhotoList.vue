@@ -77,14 +77,13 @@ export default {
     
   li {
         background-color: black;
-        position: relative;
+      //  position: relative;
         margin-bottom: -94px;
         list-style-type: none;
         text-align: center;
-    // margin: 0px;
-    // padding:0px;
+   
     img[lazy="loading"] {
-   //  width: 900px;
+   
      margin: 0px;
      padding: 0px;
       

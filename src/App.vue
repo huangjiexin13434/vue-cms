@@ -2,7 +2,11 @@
   <div id="app">
     
     <div class="container">
-      <mt-header fixed title="固定在顶部"></mt-header>
+      <mt-header fixed title="商城">
+      <span slot="left" @click="goBack" v-show="flag" >
+        <mt-button icon="back">返回</mt-button>
+      </span>
+      </mt-header>
 
 
       
@@ -22,15 +26,15 @@
          <!--  mui-active  -->
           <router-link class="mui-tab-item-lib" to="/member">
             <span class="mui-icon mui-icon-contact">
-               <span class="mui-badge">9</span>
+               <span class="mui-badge"></span>
             </span>
             <span class="mui-tab-label">会员</span>
           </router-link>
           <router-link class="mui-tab-item-lib" to="/shopcar">
             <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-              <span class="mui-badge">0</span>
+              <span class="mui-badge">{{$store.getters.selectCounts}}</span>
             </span>
-            <span class="mui-tab-label">购物车</span>
+            <span class="mui-tab-label" id="badge">购物车</span>
           </router-link>
           <router-link class="mui-tab-item-lib" to="/search">
             <span class="mui-icon mui-icon-search"></span>
@@ -48,7 +52,31 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return {
+      flag:false
+    }
+  },
+  methods:{
+    goBack(){
+       
+       this.$router.go(-1);
+    }
+  },
+  created(){
+    
+  },
+  watch: {
+    "$route.path": function(newVal) {
+      console.log(newVal);
+      if(newVal=='/home'){
+          this.flag=false;
+      }else{
+        this.flag=true;
+      }
+    }
+  }
 }
 </script>
 
