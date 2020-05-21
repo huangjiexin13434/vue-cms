@@ -25,8 +25,8 @@ Vue.use(router);
 //Vue.config.devtools = true;
 import moment from 'moment';
 Vue.filter("dateForm",function(data){
-  return moment(data).format('YYYY-MM-DD HH:mm:ss');    
-  
+  return moment(data).format('YYYY-MM-DD HH:mm:ss');
+
 });
 
 import MintUI from 'mint-ui'
@@ -42,11 +42,11 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state:{
        car: JSON.parse(localStorage.getItem('car')||'[]')
-    } , 
+    } ,
     mutations:{
        addToCar(state,goodInfoCar){
           var flag=false;
-          
+
           state.car.forEach(el => {
               if(el.id==goodInfoCar.id){
                   el.selectCount+=parseInt(goodInfoCar.selectCount);
@@ -76,33 +76,33 @@ const store = new Vuex.Store({
       getGoodsSelected(state){
          var o=[];
          state.car.forEach(result=>{
-           
+
             o[result.id]=result.isSelected;
          });
-         
+
          return o;
       },
       selectCounts(state){
           var c=0;
            state.car.forEach(el=>{
-             
+
                c+=el.selectCount;
-              
+
            });
-          
+
            return c;
         },
         getShopCount(state){
            var o=[];
-         
+
            state.car.forEach(el=>{
                o[el.id]=el.selectCount;
-               
+
            });
            return o;
         }
     },
-    
+
 })
 
 
@@ -110,8 +110,7 @@ const store = new Vuex.Store({
 
 new Vue({
   el: '#app',
-  router,
- 
+
   components: {  },
   render(h) {
      return h(App);
